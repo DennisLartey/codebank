@@ -30,7 +30,7 @@ WeatherRoot:
 			text: "Current Location"
 			size_hint_X: 25
 	ListView:
-		id: searchdenmark_results_list
+		id: search_results_list
 		adapter:
 			ListAdapter(data=[], cls=main.LocationButton, args_converter=root.args_converter)
 	Button: 
@@ -69,6 +69,12 @@ WeatherRoot:
 			on_press: app.root.show_add_location_form()
 		Button:
 			text: "Forecast"
+	BoxLayout:
+		orientation: "horizontal"
+		Label:
+			text: root.conditions
+		AsyncImage:
+			source: root.conditions_image
 			
 <LocationButton>:
 	text: "{} ({})".format(self.location[0], self.location[1])
