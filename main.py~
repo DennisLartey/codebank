@@ -77,13 +77,9 @@ class CurrentWeather(BoxLayout):
 		request = UrlRequest(weather_url, self.weather_retrieved)
 
 	def weather_retrieved(self, request, data):
-		data = json.loads(data.decode()) if not isinstance(data, dict) else data
+		
 		self.conditions_image = "http://openweathermap.org/img/w/{}.png".format(
 			data['weather'][0]['icon'])
-		self.render_conditions(data['weather'][0]['description'])
-		self.temp = data['main']['temp']
-		self.temp_min = data['main']['temp_min']
-		self.temp_max = data['main']['temp_max']
 
 	def render_conditions(self, conditions_description):
 		if "clear" in conditions_description.lower():
